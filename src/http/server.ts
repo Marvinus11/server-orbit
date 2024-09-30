@@ -1,4 +1,10 @@
-import fastify, { FastifyBaseLogger, FastifyInstance, FastifyPluginOptions, FastifyTypeProvider, RawServerDefault } from 'fastify'
+import fastify, {
+  FastifyBaseLogger,
+  FastifyInstance,
+  FastifyPluginOptions,
+  FastifyTypeProvider,
+  RawServerDefault,
+} from 'fastify'
 import {
   serializerCompiler,
   validatorCompiler,
@@ -12,8 +18,10 @@ import fastifyCors from '@fastify/cors'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
+process.env.PORT || 3333
+
 app.register(fastifyCors, {
-  origin: '*'
+  origin: '*',
 })
 
 app.setValidatorCompiler(validatorCompiler)
@@ -23,13 +31,3 @@ app.register(createGoalRoute)
 app.register(createCompletionRoute)
 app.register(getPendingGoalsRoute)
 app.register(getWeekSummaryRoute)
-
-app
-  .listen({
-    port: 3333,
-  })
-  .then(() => {
-    console.log('HTTP server running')
-  })
-
-

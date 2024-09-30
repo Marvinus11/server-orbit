@@ -4,13 +4,17 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch --env-file .env src/http/server.ts",
-    "seed": "tsx --env-file .env src/db/seeds.ts"
+    "seed": "tsx --env-file .env src/db/seeds.ts",
+    "start": "tsx watch --env-file .env src/http/server.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "type": "commonjs",
+  "engines": {
+    "node": "14.x"
+  },
   "devDependencies": {
     "@biomejs/biome": "1.9.1",
     "@types/node": "^22.5.5",
